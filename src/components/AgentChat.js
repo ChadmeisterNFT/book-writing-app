@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useManuscript } from '../contexts/ManuscriptContext';
 import storyArchitectAgent from '../agents/storyArchitectAgent';
 import characterDeveloperAgent from '../agents/characterDeveloperAgent';
+import continuityTrackerAgent from '../agents/continuityTrackerAgent';
+import styleVoiceCoachAgent from '../agents/styleVoiceCoachAgent';
+import dialogueSpecialistAgent from '../agents/dialogueSpecialistAgent';
 import storageService from '../services/storageService';
 import './AgentChat.css';
 
@@ -31,6 +34,24 @@ const AgentChat = () => {
       description: 'Specialist in character development and consistency',
       icon: '👤',
       agent: characterDeveloperAgent,
+    },
+    continuity_tracker: {
+      name: 'Continuity Tracker',
+      description: 'Monitors timeline and detail consistency',
+      icon: '🔍',
+      agent: continuityTrackerAgent,
+    },
+    style_voice_coach: {
+      name: 'Style & Voice Coach',
+      description: 'Analyzes writing style and prose quality',
+      icon: '✍️',
+      agent: styleVoiceCoachAgent,
+    },
+    dialogue_specialist: {
+      name: 'Dialogue Specialist',
+      description: 'Expert in dialogue authenticity and character voice',
+      icon: '💬',
+      agent: dialogueSpecialistAgent,
     },
   };
 
@@ -82,6 +103,24 @@ const AgentChat = () => {
           inputMessage,
           character
         );
+      } else if (selectedAgent === 'continuity_tracker') {
+        response = await agent.answerQuestion(
+          currentManuscript,
+          inputMessage,
+          chapter
+        );
+      } else if (selectedAgent === 'style_voice_coach') {
+        response = await agent.answerQuestion(
+          currentManuscript,
+          inputMessage,
+          chapter
+        );
+      } else if (selectedAgent === 'dialogue_specialist') {
+        response = await agent.answerQuestion(
+          currentManuscript,
+          inputMessage,
+          chapter
+        );
       }
 
       const assistantMessage = {
@@ -126,26 +165,38 @@ const AgentChat = () => {
           analysis = await agent.analyzeManuscript(currentManuscript);
         } else if (selectedAgent === 'character_developer') {
           analysis = await agent.analyzeAllCharacters(currentManuscript);
+        } else if (selectedAgent === 'continuity_tracker') {
+          analysis = await agent.analyzeManuscript(currentManuscript);
+        } else if (selectedAgent === 'style_voice_coach') {
+          analysis = await agent.analyzeManuscript(currentManuscript);
+        } else if (selectedAgent === 'dialogue_specialist') {
+          analysis = await agent.analyzeManuscript(currentManuscript);
         }
       } else if (type === 'chapter' && selectedChapter) {
         const chapter = currentManuscript.chapters.find(
           ch => ch.id === selectedChapter
         );
         if (chapter) {
-          analysis = await storyArchitectAgent.analyzeChapter(
-            currentManuscript,
-            chapter
-          );
+          if (selectedAgent === 'story_architect') {
+            analysis = await agent.analyzeChapter(currentManuscript, chapter);
+          } else if (selectedAgent === 'continuity_tracker') {
+            analysis = await agent.analyzeChapter(currentManuscript, chapter);
+          } else if (selectedAgent === 'style_voice_coach') {
+            analysis = await agent.analyzeChapter(currentManuscript, chapter);
+          } else if (selectedAgent === 'dialogue_specialist') {
+            analysis = await agent.analyzeChapter(currentManuscript, chapter);
+          }
         }
       } else if (type === 'character' && selectedCharacter) {
         const character = currentManuscript.characters.find(
           c => c.id === selectedCharacter
         );
         if (character) {
-          analysis = await characterDeveloperAgent.analyzeCharacter(
-            currentManuscript,
-            character
-          );
+          if (selectedAgent === 'character_developer') {
+            analysis = await agent.analyzeCharacter(currentManuscript, character);
+          } else if (selectedAgent === 'dialogue_specialist') {
+            analysis = await agent.analyzeCharacterDialogue(currentManuscript, character);
+          }
         }
       }
 
