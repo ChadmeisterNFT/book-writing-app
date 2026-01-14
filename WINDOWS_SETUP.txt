@@ -1,0 +1,89 @@
+====================================================================
+    AI BOOK WRITER - WINDOWS SETUP INSTRUCTIONS
+====================================================================
+
+FIRST TIME SETUP (Only need to do this once):
+--------------------------------------------------------------------
+
+1. GET YOUR API KEY:
+   - Go to: https://console.anthropic.com/
+   - Sign up or log in
+   - Create an API key
+   - Copy it (starts with sk-ant-)
+
+2. ADD YOUR API KEY:
+   - In this folder, find ".env.example"
+   - Make a copy and rename it to ".env" (just .env, no .example)
+   - Open .env with Notepad
+   - Replace "your_api_key_here" with your actual key
+   - Save and close
+
+3. REBUILD THE APP:
+   - Open Command Prompt in this folder
+   - Type: npm run build
+   - Press Enter
+   - Wait for it to finish
+
+====================================================================
+
+HOW TO USE (Every time you want to write):
+--------------------------------------------------------------------
+
+EASY WAY:
+  → Just double-click "START_APP.bat"
+  → Your browser will open automatically
+  → Start writing!
+
+MANUAL WAY:
+  1. Open Command Prompt in this folder
+  2. Type: serve -s build -l 3000
+  3. Open Chrome and go to: http://localhost:3000
+
+====================================================================
+
+WHEN YOU'RE DONE WRITING:
+--------------------------------------------------------------------
+
+  - Press Ctrl+C in the Command Prompt window
+  - Or just close the Command Prompt window
+
+====================================================================
+
+WHERE IS MY DATA SAVED?
+--------------------------------------------------------------------
+
+  - All your writing is saved automatically in Chrome
+  - Stored locally on your computer (not in the cloud)
+  - To backup: Use "Export to JSON" button in the app
+  - To restore: Import the JSON file back into the app
+
+====================================================================
+
+TIPS:
+--------------------------------------------------------------------
+
+  ✓ Keep the Command Prompt window open while using the app
+  ✓ Bookmark http://localhost:3000 in Chrome for quick access
+  ✓ Export your manuscript regularly as backup
+  ✓ The app works offline (except AI features need internet)
+
+====================================================================
+
+HAVING TROUBLE?
+--------------------------------------------------------------------
+
+Problem: "serve" is not recognized
+Solution: The script installs it automatically, or run:
+          npm install -g serve
+
+Problem: Can't find .env file
+Solution: You need to show hidden files in Windows Explorer
+          Or use: copy .env.example .env
+
+Problem: AI agents don't work
+Solution: Check that you added your API key correctly
+          Make sure you rebuilt with: npm run build
+
+====================================================================
+
+ENJOY WRITING YOUR BOOK! 📚
