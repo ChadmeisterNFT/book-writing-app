@@ -1,0 +1,339 @@
+.editor-container {
+  display: flex;
+  height: calc(100vh - 60px);
+  background: #ffffff;
+  position: relative;
+}
+
+.dark .editor-container {
+  background: #1a1a1a;
+}
+
+/* Focus Mode */
+.editor-container.focus-mode {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  height: 100vh;
+}
+
+.editor-container.focus-mode .chapter-sidebar {
+  display: none;
+}
+
+/* No Manuscript State */
+.no-manuscript {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: #666;
+}
+
+.dark .no-manuscript {
+  color: #999;
+}
+
+/* Chapter Sidebar */
+.chapter-sidebar {
+  width: 280px;
+  background: #f8f9fa;
+  border-right: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.dark .chapter-sidebar {
+  background: #2a2a2a;
+  border-right-color: #3a3a3a;
+}
+
+.sidebar-header {
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dark .sidebar-header {
+  border-bottom-color: #3a3a3a;
+}
+
+.sidebar-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.dark .sidebar-header h3 {
+  color: #e0e0e0;
+}
+
+.add-chapter-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.add-chapter-btn:hover {
+  background: #0056b3;
+}
+
+/* Chapter List */
+.chapter-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.chapter-item {
+  padding: 12px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  border: 1px solid transparent;
+}
+
+.chapter-item:hover {
+  background: #e8e9eb;
+}
+
+.dark .chapter-item:hover {
+  background: #333;
+}
+
+.chapter-item.active {
+  background: #e3f2fd;
+  border-color: #2196f3;
+}
+
+.dark .chapter-item.active {
+  background: #1a3a52;
+  border-color: #2196f3;
+}
+
+.chapter-item-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.chapter-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: #007bff;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.chapter-title {
+  flex: 1;
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dark .chapter-title {
+  color: #e0e0e0;
+}
+
+.chapter-item-meta {
+  font-size: 12px;
+  color: #666;
+  padding-left: 32px;
+}
+
+.dark .chapter-item-meta {
+  color: #999;
+}
+
+/* Editor Main Area */
+.editor-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Editor Toolbar */
+.editor-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.dark .editor-toolbar {
+  background: #2a2a2a;
+  border-bottom-color: #3a3a3a;
+}
+
+.toolbar-left,
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chapter-title-input {
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 4px;
+  min-width: 200px;
+  transition: background 0.2s;
+}
+
+.chapter-title-input:focus {
+  outline: none;
+  background: #ffffff;
+}
+
+.dark .chapter-title-input {
+  color: #e0e0e0;
+}
+
+.dark .chapter-title-input:focus {
+  background: #1a1a1a;
+}
+
+.word-count {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.dark .word-count {
+  color: #999;
+}
+
+.toolbar-btn {
+  background: transparent;
+  border: 1px solid #d0d0d0;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s;
+  color: #333;
+}
+
+.toolbar-btn:hover {
+  background: #e8e9eb;
+  border-color: #b0b0b0;
+}
+
+.dark .toolbar-btn {
+  border-color: #4a4a4a;
+  color: #e0e0e0;
+}
+
+.dark .toolbar-btn:hover {
+  background: #3a3a3a;
+  border-color: #6a6a6a;
+}
+
+.focus-btn:hover {
+  background: #e3f2fd;
+  border-color: #2196f3;
+}
+
+.delete-btn:hover {
+  background: #ffebee;
+  border-color: #f44336;
+}
+
+/* Editor Textarea */
+.editor-textarea {
+  flex: 1;
+  border: none;
+  padding: 40px 60px;
+  font-size: 16px;
+  line-height: 1.8;
+  font-family: 'Georgia', serif;
+  color: #333;
+  background: #ffffff;
+  resize: none;
+  outline: none;
+}
+
+.dark .editor-textarea {
+  background: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.editor-textarea::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.dark .editor-textarea::placeholder {
+  color: #666;
+}
+
+/* Focus mode specific styles */
+.focus-mode .editor-textarea {
+  padding: 80px 80px;
+  font-size: 18px;
+}
+
+/* Scrollbar styling */
+.chapter-list::-webkit-scrollbar,
+.editor-textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chapter-list::-webkit-scrollbar-track,
+.editor-textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chapter-list::-webkit-scrollbar-thumb,
+.editor-textarea::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-radius: 4px;
+}
+
+.chapter-list::-webkit-scrollbar-thumb:hover,
+.editor-textarea::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+.dark .chapter-list::-webkit-scrollbar-thumb,
+.dark .editor-textarea::-webkit-scrollbar-thumb {
+  background: #4a4a4a;
+}
+
+.dark .chapter-list::-webkit-scrollbar-thumb:hover,
+.dark .editor-textarea::-webkit-scrollbar-thumb:hover {
+  background: #6a6a6a;
+}

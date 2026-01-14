@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ManuscriptProvider } from './contexts/ManuscriptContext';
 import Header from './components/Header';
-import WritingArea from './components/WritingArea';
-import Dashboard from './components/Dashboard';
+import EnhancedDashboard from './components/EnhancedDashboard';
+import Editor from './components/Editor';
+import AgentChat from './components/AgentChat';
 import ProgressTracker from './components/ProgressTracker';
 import './App.css';
 
@@ -23,18 +25,21 @@ function App() {
   };
 
   return (
-    <div className={`App ${theme}`}>
-      <Router>
-        <Header theme={theme} toggleTheme={toggleTheme} />
-        <main className="main-content">
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/writing" element={<WritingArea />} />
-            <Route path="/progress" element={<ProgressTracker />} />
-          </Routes>
-        </main>
-      </Router>
-    </div>
+    <ManuscriptProvider>
+      <div className={`App ${theme}`}>
+        <Router>
+          <Header theme={theme} toggleTheme={toggleTheme} />
+          <main className="main-content">
+            <Routes>
+              <Route path="/" element={<EnhancedDashboard />} />
+              <Route path="/editor" element={<Editor />} />
+              <Route path="/agents" element={<AgentChat />} />
+              <Route path="/progress" element={<ProgressTracker />} />
+            </Routes>
+          </main>
+        </Router>
+      </div>
+    </ManuscriptProvider>
   );
 }
 

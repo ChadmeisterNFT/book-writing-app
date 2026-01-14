@@ -9,10 +9,11 @@ import { NavLink } from 'react-router-dom';
 const Header = ({ theme, toggleTheme }) => {
   return (
     <header className="header">
-      <h1 className="app-title">Book Writing App</h1>
+      <h1 className="app-title">AI Book Writer</h1>
       <nav className="nav-links">
         <NavLink to="/" end className={({ isActive }) => isActive ? 'active' : ''}>Dashboard</NavLink>
-        <NavLink to="/writing" className={({ isActive }) => isActive ? 'active' : ''}>Write</NavLink>
+        <NavLink to="/editor" className={({ isActive }) => isActive ? 'active' : ''}>Editor</NavLink>
+        <NavLink to="/agents" className={({ isActive }) => isActive ? 'active' : ''}>AI Agents</NavLink>
         <NavLink to="/progress" className={({ isActive }) => isActive ? 'active' : ''}>Progress</NavLink>
       </nav>
       <button onClick={toggleTheme} className="theme-toggle">
