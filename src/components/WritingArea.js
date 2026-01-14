@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { storage } from '../services/firebase';
+import { ref, uploadString } from 'firebase/storage';
 
 /**
  * WritingArea provides a large text area for users to draft their book.
@@ -23,8 +24,8 @@ const WritingArea = () => {
    */
   const handleUpload = async () => {
     try {
-      const fileRef = storage.ref().child('writing/myBook.txt');
-      await fileRef.putString(text);
+      const fileRef = ref(storage, 'writing/myBook.txt');
+      await uploadString(fileRef, text);
       alert('Your work has been uploaded to the cloud.');
     } catch (error) {
       console.error('Upload failed:', error);

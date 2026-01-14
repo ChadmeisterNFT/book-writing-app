@@ -1,7 +1,7 @@
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/firestore';
-import 'firebase/compat/storage';
-import 'firebase/compat/auth';
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
+import { getAuth } from 'firebase/auth';
 
 // NOTE: You need to provide your own Firebase configuration values.
 // Create a `.env` file in the root of the project with variables like
@@ -23,10 +23,10 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-const firestore = app.firestore();
-const storage = app.storage();
-const auth = app.auth();
+const firestore = getFirestore(app);
+const storage = getStorage(app);
+const auth = getAuth(app);
 
 export { firestore, storage, auth };
