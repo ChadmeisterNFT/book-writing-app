@@ -5,6 +5,7 @@ import characterDeveloperAgent from '../agents/characterDeveloperAgent';
 import continuityTrackerAgent from '../agents/continuityTrackerAgent';
 import styleVoiceCoachAgent from '../agents/styleVoiceCoachAgent';
 import dialogueSpecialistAgent from '../agents/dialogueSpecialistAgent';
+import ghostwriterAgent from '../agents/ghostwriterAgent';
 import storageService from '../services/storageService';
 import './AgentChat.css';
 
@@ -52,6 +53,12 @@ const AgentChat = () => {
       description: 'Expert in dialogue authenticity and character voice',
       icon: '💬',
       agent: dialogueSpecialistAgent,
+    },
+    ghostwriter: {
+      name: 'Ghostwriter',
+      description: 'Generates content, writes scenes, and continues your story',
+      icon: '✨',
+      agent: ghostwriterAgent,
     },
   };
 
@@ -116,6 +123,12 @@ const AgentChat = () => {
           chapter
         );
       } else if (selectedAgent === 'dialogue_specialist') {
+        response = await agent.answerQuestion(
+          currentManuscript,
+          inputMessage,
+          chapter
+        );
+      } else if (selectedAgent === 'ghostwriter') {
         response = await agent.answerQuestion(
           currentManuscript,
           inputMessage,
